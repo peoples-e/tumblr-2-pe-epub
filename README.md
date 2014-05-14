@@ -1,12 +1,12 @@
-# tumblr2peepub
+# tumblr-2-pe-epub
 
 Fetches a Tumblr and converts it to [peepub](https://github.com/peoples-e/pe-epub) JSON format.  So you can easily make an e-book from a Tumblr
 
 ## Install	
-	npm install tumblr2peepub
+	npm install tumblr-2-pe-epub
 	
 ## Usage
-	var Tumblr2Peepub = require('tumblr2peepub');
+	var Tumblr2Peepub = require('tumblr-2-pe-epub');
 
 	var t2p = new Tumblr2Peepub({
 	  consumer_key: 'xxx',

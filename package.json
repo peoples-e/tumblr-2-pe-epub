@@ -1,7 +1,7 @@
 {
-  "name": "tumblr2peepub",
+  "name": "tumblr-2-pe-epub",
   "version": "0.1",
-  "description": "tumblr into peepub format",
+  "description": "tumblr into pe-epub format",
   "main": "index.js",
   "scripts": {
     "test": "node test.js",
