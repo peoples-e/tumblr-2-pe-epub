@@ -1,0 +1,24 @@
+{
+  "name": "tumblr2peepub",
+  "version": "0.1",
+  "description": "tumblr into peepub format",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js",
+    "watch": "(./node_modules/.bin/coffee --compile --watch .&); ./node_modules/.bin/nodemon index.js",
+    "start": "./node_modules/.bin/coffee --compile *.coffee; node index.js"
+  },
+  "dependencies": {
+    "tumblr": "~0.4.1"
+  },
+  "devDependencies": {
+    "coffee-script": "~1.7.1",
+    "nodemon": "^1.0.19"
+  },
+  "keywords": [
+    "epub",
+    "tumblr"
+  ],
+  "author": "@owise1",
+  "license": "MIT"
+}
