@@ -17,6 +17,9 @@
           return that.blog.posts({
             offset: offset || 0
           }, function(err, res) {
+            if (err) {
+              return cb(err);
+            }
             bookDoc = {
               title: res.blog.title,
               url: 'http://' + that.blogUrl,
@@ -28,7 +31,7 @@
             return fetchPosts(cb, allPosts.length);
           });
         } else {
-          return cb(allPosts);
+          return cb(null, allPosts);
         }
       }, 500);
     };
@@ -38,8 +41,11 @@
       allPosts = [];
       totalPosts = false;
       bookDoc = {};
-      return fetchPosts(function(posts) {
+      return fetchPosts(function(err, posts) {
         var photos;
+        if (err) {
+          return cb(err);
+        }
         photos = posts.filter(function(p) {
           return p.photos;
         }).map(function(p) {
@@ -62,7 +68,7 @@
         }).filter(function(p) {
           return p.body != null;
         });
-        return cb(bookDoc);
+        return cb(null, bookDoc);
       });
     };
     return this;

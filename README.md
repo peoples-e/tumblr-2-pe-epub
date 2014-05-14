@@ -13,7 +13,7 @@ Fetches a Tumblr and converts it to [peepub](https://github.com/peoples-e/pe-epu
 	  consumer_secret: 'xxx'
 	});
 
-	t2p.fetch('tumblr_prefix', function(json){
+	t2p.fetch('tumblr_prefix', function(err, json){
 	  console.log(json); // now you can use pe-epub to create an ebook
 	});
 

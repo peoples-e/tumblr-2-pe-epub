@@ -13,6 +13,7 @@ Tumblr2Peepub = (tumblrConfig) ->
     setTimeout ->
       if !totalPosts || totalPosts > allPosts.length
         that.blog.posts { offset : offset || 0 }, (err, res) ->
+          return cb err if err
 
           bookDoc = 
             title       : res.blog.title
@@ -24,7 +25,7 @@ Tumblr2Peepub = (tumblrConfig) ->
           allPosts = allPosts.concat res.posts
           fetchPosts cb, allPosts.length
       else
-        cb allPosts
+        cb null, allPosts
     , 500
 
   this.fetch = (tumblrPrefix, cb) ->
@@ -35,7 +36,8 @@ Tumblr2Peepub = (tumblrConfig) ->
     totalPosts = false
     bookDoc    = {}
 
-    fetchPosts (posts) ->
+    fetchPosts (err, posts) ->
+      return cb err if err
 
       photos = posts.filter((p) -> p.photos).map (p) ->
         p.photos[0].original_size.url
@@ -54,7 +56,7 @@ Tumblr2Peepub = (tumblrConfig) ->
         }
       .filter (p) ->
         return p.body?
-      cb bookDoc
+      cb null, bookDoc
 
   return this
   
