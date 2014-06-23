@@ -1,6 +1,6 @@
 {
   "name": "tumblr-2-pe-epub",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "tumblr into pe-epub format",
   "main": "index.js",
   "scripts": {
@@ -9,10 +9,11 @@
     "start": "./node_modules/.bin/coffee --compile *.coffee; node index.js"
   },
   "repository": {
-      "type": "git",
-      "url": "https://github.com/peoples-e/tumblr-2-pe-epub"
+    "type": "git",
+    "url": "https://github.com/peoples-e/tumblr-2-pe-epub"
   },
   "dependencies": {
+    "cheerio": "^0.17.0",
     "tumblr": "~0.4.1"
   },
   "devDependencies": {
