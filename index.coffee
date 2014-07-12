@@ -12,7 +12,7 @@ Tumblr2Peepub = (tumblrConfig) ->
   # fetch all posts recursively
   fetchPosts = (cb, offset) ->
     setTimeout ->
-      if !totalPosts || totalPosts > allPosts.length
+      if totalPosts isnt false || totalPosts > allPosts.length
         that.blog.posts { offset : offset || 0 }, (err, res) ->
           return cb err if err
 
