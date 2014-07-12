@@ -15,7 +15,7 @@
     bookDoc = {};
     fetchPosts = function(cb, offset) {
       return setTimeout(function() {
-        if (totalPosts !== false || totalPosts > allPosts.length) {
+        if (totalPosts === false || totalPosts > allPosts.length) {
           return that.blog.posts({
             offset: offset || 0
           }, function(err, res) {
