@@ -15,14 +15,18 @@
     bookDoc = {};
     fetchPosts = function(cb, offset) {
       return setTimeout(function() {
+        var o;
         if (totalPosts === false || totalPosts > allPosts.length) {
+          o = offset || 0;
           return that.blog.posts({
-            offset: offset || 0
+            offset: o
           }, function(err, res) {
             if (err) {
               return cb(err);
             }
-            console.log(res);
+            if (that.tumblrConfig.verbose) {
+              console.log(that.blogUrl + ": " + o + '/' + res.total_posts);
+            }
             bookDoc = {
               title: res.blog.title || that.blogUrl,
               url: 'http://' + that.blogUrl,
@@ -137,7 +141,7 @@
         }).map(function(p) {
           return p.photos[0].original_size.url;
         });
-        bookDoc.cover = photos[photos.length - 1];
+        bookDoc.cover = photos ? photos[photos.length - 1] : "https://raw.githubusercontent.com/peoples-e/tumblr-2-pe-epub/master/assets/cover.jpg";
         bookDoc.pages = posts.map(formatPosts).filter(function(p) {
           return p.body != null;
         });

@@ -13,10 +13,11 @@ Tumblr2Peepub = (tumblrConfig) ->
   fetchPosts = (cb, offset) ->
     setTimeout ->
       if totalPosts is false || totalPosts > allPosts.length
-        that.blog.posts { offset : offset || 0 }, (err, res) ->
+        o = offset || 0
+        that.blog.posts { offset : o }, (err, res) ->
           return cb err if err
 
-          console.log(res);
+          console.log(that.blogUrl + ": " + o + '/' + res.total_posts) if that.tumblrConfig.verbose
 
           bookDoc = 
             title       : res.blog.title || that.blogUrl
@@ -126,7 +127,7 @@ Tumblr2Peepub = (tumblrConfig) ->
       photos = posts.filter((p) -> p.photos).map (p) ->
         p.photos[0].original_size.url
 
-      bookDoc.cover = photos[(photos.length-1)]
+      bookDoc.cover = if photos then photos[(photos.length-1)] else "https://raw.githubusercontent.com/peoples-e/tumblr-2-pe-epub/master/assets/cover.jpg"
 
       bookDoc.pages = posts
       .map formatPosts
