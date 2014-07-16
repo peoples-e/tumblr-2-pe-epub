@@ -16,6 +16,8 @@ Tumblr2Peepub = (tumblrConfig) ->
         that.blog.posts { offset : offset || 0 }, (err, res) ->
           return cb err if err
 
+          console.log(res);
+
           bookDoc = 
             title       : res.blog.title || that.blogUrl
             url         : 'http://' + that.blogUrl

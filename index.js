@@ -22,6 +22,7 @@
             if (err) {
               return cb(err);
             }
+            console.log(res);
             bookDoc = {
               title: res.blog.title || that.blogUrl,
               url: 'http://' + that.blogUrl,
